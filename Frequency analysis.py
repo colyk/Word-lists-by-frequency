@@ -6,7 +6,7 @@ def get_key(diction, value):
             return k
 
 
-def write_by_count(file_in='text.txt', file_out='text_out.txt', reversed=False):
+def write_by_count(file_in='text.txt', file_out='text_out.txt', reverse_=False):
     if not file_in.endswith('.txt'):
         file_in += '.txt'
     if not file_out.endswith('.txt'):
@@ -21,7 +21,7 @@ def write_by_count(file_in='text.txt', file_out='text_out.txt', reversed=False):
         if(word not in wordDict.keys()):
             wordDict[word] = text.count(word)
 
-    for i in sorted(wordDict.values(), reverse=not reversed):
+    for i in sorted(wordDict.values(), reverse=not reverse_):
         result += get_key(wordDict, i) + ' - ' + str(i) + '\n'
         wordDict.pop(get_key(wordDict, i))
 
@@ -29,7 +29,7 @@ def write_by_count(file_in='text.txt', file_out='text_out.txt', reversed=False):
         file.write(result)
 
 
-def write_alphabet_order(file_in='text.txt', file_out='text_out.txt', reversed=False):
+def write_alphabet_order(file_in='text.txt', file_out='text_out.txt', reverse_=False):
     if not file_in.endswith('.txt'):
         file_in += '.txt'
     if not file_out.endswith('.txt'):
@@ -40,7 +40,7 @@ def write_alphabet_order(file_in='text.txt', file_out='text_out.txt', reversed=F
     text = [word.title() for word in re.split(r'[\W]', text_raw)]
     result = 'The approximate number of words in the text: ' + str(len(text)) + '\n'
 
-    for word in sorted(set(text), reverse=reversed):
+    for word in sorted(set(text), reverse=reverse_):
         result += word + ' - ' + str(text.count(word)) + '\n'
 
     with open(file_out, "w", encoding='utf-8') as file:
@@ -48,6 +48,6 @@ def write_alphabet_order(file_in='text.txt', file_out='text_out.txt', reversed=F
 
 
 if __name__ == '__main__':
-    write_by_count(reversed=False)   
-    write_alphabet_order(reversed=False, file_out='text2')     
+    write_by_count(reverse_=False)
+    write_alphabet_order(reverse_=False, file_out='text2')
 
