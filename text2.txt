@@ -1,0 +1,5 @@
+The approximate number of words in the text: 12
+A - 3
+B - 1
+C - 1
+D - 7
